@@ -8,28 +8,35 @@ import { Recipe } from "./recipe.model";
 export class RecipeService {
     recipesChanged = new Subject<Recipe[]>();
     
-    recipes: Recipe[] = [
-        new Recipe(
-            'Test Recipe', 
-            'This is test', 
-            'https://runningonrealfood.com/wp-content/uploads/2021/02/vegan-one-pot-pasta-recipe-oh.-3-700x1049.jpg',
-            [
-                new Ingredient('Pasta', 1),
-                new Ingredient('Cheese', 3),
-            ]
-            ),
-        new Recipe(
-            'New Recipe', 
-            'This is new recipe', 
-            'https://runningonrealfood.com/wp-content/uploads/2021/02/vegan-one-pot-pasta-recipe-oh.-3-700x1049.jpg', 
-            [
-                new Ingredient('Potatoes', 1),
-                new Ingredient('Meat', 2),
-            ]
-            )
-    ];
+    // recipes: Recipe[] = [
+    //     new Recipe(
+    //         'Test Recipe', 
+    //         'This is test', 
+    //         'https://runningonrealfood.com/wp-content/uploads/2021/02/vegan-one-pot-pasta-recipe-oh.-3-700x1049.jpg',
+    //         [
+    //             new Ingredient('Pasta', 1),
+    //             new Ingredient('Cheese', 3),
+    //         ]
+    //         ),
+    //     new Recipe(
+    //         'New Recipe', 
+    //         'This is new recipe', 
+    //         'https://runningonrealfood.com/wp-content/uploads/2021/02/vegan-one-pot-pasta-recipe-oh.-3-700x1049.jpg', 
+    //         [
+    //             new Ingredient('Potatoes', 1),
+    //             new Ingredient('Meat', 2),
+    //         ]
+    //         )
+    // ];
+
+    private recipes: Recipe[] = [];
 
     constructor(private slService: ShoppingListService){}
+
+    setRecipes(recipes: Recipe[]) {
+        this.recipes = recipes;
+        this.recipesChanged.next(this.recipes.slice());
+    }
 
     getRecipes() {
         return this.recipes.slice();
