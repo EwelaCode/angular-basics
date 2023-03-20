@@ -10,7 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { RecipeService } from './recipes/recipe.service';
 import { AuthComponent } from './auth/auth.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
-import { RecipesModule } from './recipes/recipes.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -27,10 +26,10 @@ import { SharedModule } from './shared/shared.module';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    RecipesModule,
     ShoppingListModule,
     SharedModule,
   ],
+  // providers could be moved to separate module as well 
   providers: [
     ShoppingListService,
     RecipeService, 
